@@ -9,14 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Assets\img_home.png" />
+    <None Remove="Resources\Assets\tgBtn_default.png" />
+    <None Remove="Resources\Assets\tgBtn_MouseOver.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Assets\" />
     <Folder Include="Resources\Db\" />
-    <Folder Include="Resources\Fonts\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Assets\img_home.png" />
+    <Resource Include="Resources\Assets\tgBtn_default.png" />
+    <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
