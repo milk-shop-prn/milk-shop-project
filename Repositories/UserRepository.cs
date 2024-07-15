@@ -6,8 +6,8 @@ namespace Repositories
 {
     public class UserRepository : IUserRepository
     {
-        public User CheckLogin(string email, string password)
-            => UserDAO.Instance.CheckLogin(email, password);
+        public User CheckLogin(string email, string password, string key)
+            => UserDAO.Instance.CheckLogin(email, password,key);
 
         public void DeleteUser(User user)
             => UserDAO.Instance.DeleteUser(user);

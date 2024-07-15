@@ -1,4 +1,6 @@
 ﻿using BusinessObjects.Models;
+using Microsoft.Extensions.Configuration;
+using MilkShop.config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +28,12 @@ namespace DataAccessObjects
                 }
             }
         }
-
-        public User CheckLogin(string email, string password)
+        
+        public User CheckLogin(string email, string password, string key)
         {
+            AesEncryption aesEncryption = new AesEncryption();
             using var db = new MilkShopContext();
+            db.Users.ToList().Where(c => c.Email.Equals(email) && aesEncryption.Decrypt(c.PasswordHash,key).Equals(password)).First();
             return db.Users.SingleOrDefault(u => u.Email.Equals(email) && u.PasswordHash.Equals(password));
         }
 
@@ -52,9 +56,11 @@ namespace DataAccessObjects
                 using var db = new MilkShopContext();
                 db.Users.Add(user);
                 db.SaveChanges();
+                
             }
             catch (Exception ex)
             {
+                
                 throw new Exception(ex.Message);
             }
         }

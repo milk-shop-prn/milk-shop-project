@@ -5,7 +5,7 @@ namespace Repositories
 {
     public interface IUserRepository
     {
-        User CheckLogin(string email, string password);
+        User CheckLogin(string email, string password,string key);
 
         List<User> GetAll();
 
