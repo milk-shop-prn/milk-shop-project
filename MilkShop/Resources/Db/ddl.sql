@@ -4,7 +4,6 @@ use MilkShop
 -- Tạo bảng Users
 CREATE TABLE Users (
     UserID INT PRIMARY KEY IDENTITY(1,1),
-    Username NVARCHAR(50) NOT NULL UNIQUE,
     PasswordHash NVARCHAR(256) NOT NULL,
     FullName NVARCHAR(100),
     Email NVARCHAR(100) NOT NULL UNIQUE,
@@ -107,12 +106,12 @@ CREATE TABLE Reports (
 
 
 -- Thêm dữ liệu giả vào bảng Users
-INSERT INTO Users (Username, PasswordHash, FullName, Email, PhoneNumber, Role, Points)
+INSERT INTO Users (PasswordHash, FullName, Email, PhoneNumber, Role, Points)
 VALUES 
-('guest1', 'hashedpassword1', 'Guest One', 'guest1@example.com', '1234567890', 'Guest', 0),
-('member1', 'hashedpassword2', 'Member One', 'member1@example.com', '0987654321', 'Member', 100),
-('staff1', 'hashedpassword3', 'Staff One', 'staff1@example.com', '1112223333', 'Staff', 0),
-('admin1', 'hashedpassword4', 'Admin One', 'admin1@example.com', '4445556666', 'Admin', 0);
+('hashedpassword1', 'Guest One', 'guest1@example.com', '1234567890', 'Guest', 0),
+('hashedpassword2', 'Member One', 'member1@example.com', '0987654321', 'Member', 100),
+('hashedpassword3', 'Staff One', 'staff1@example.com', '1112223333', 'Staff', 0),
+('hashedpassword4', 'Admin One', 'admin1@example.com', '4445556666', 'Admin', 0);
 
 -- Thêm dữ liệu giả vào bảng Products
 INSERT INTO Products (ProductName, Description, Price, Stock, Category, ImageURL)

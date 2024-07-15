@@ -1,7 +1,9 @@
 ﻿using BusinessObjects.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Configuration;
 using MilkShop.config;
+using MilkShop.Views.Admin;
+using MilkShop.Views.Customer;
+using MilkShop.Views.Staff;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -18,7 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MilkShop
+namespace MilkShop.Views.Auth
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
@@ -39,14 +41,13 @@ namespace MilkShop
             return configuration["stringKey:key"];
         }
 
-        private void btn_button_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string email = txt_Email.Text;
-            string password = txt_password.Password;
-
+            string email = TxtEmail.Text;
+            string password = TxtPassword.Password;
 
             AesEncryption aesEncryption = new AesEncryption();
-            User account = userService.GetAll().Where(c => c.Email.Equals(email) && aesEncryption.Decrypt(c.PasswordHash,getKey()).Equals(password)).First();
+            User account = userService.CheckLogin(email, password, getKey());
             if (account != null)
             {
                 Application.Current.Properties["Account"] = account;
@@ -54,12 +55,10 @@ namespace MilkShop
                 {
                     AdminWindow adminWindow = new AdminWindow();
                     adminWindow.Show();
-
-
                 }
                 else if (account.Role.Equals("Member"))
                 {
-                    UserWindow userWindow = new UserWindow();
+                    CustomerWindow userWindow = new CustomerWindow();
                     userWindow.Show();
                 }
                 else if (account.Role.Equals("Staff"))
@@ -71,16 +70,18 @@ namespace MilkShop
             }
             else
             {
-                MessageBox.Show("userName or password invalid");
+                MessageBox.Show($"Username or password invalid"
+                       , "Error", MessageBoxButton.OK
+                       , MessageBoxImage.Error);
             }
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();
             registerWindow.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

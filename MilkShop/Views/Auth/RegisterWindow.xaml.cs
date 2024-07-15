@@ -17,7 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MilkShop
+namespace MilkShop.Views.Auth
 {
     /// <summary>
     /// Interaction logic for RegisterWindow.xaml
@@ -39,39 +39,43 @@ namespace MilkShop
             return configuration["stringKey:key"];
         }
 
-        private void btn_button_Click(object sender, RoutedEventArgs e)
+        private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            string email =txt_Email.Text;
-            string passworld = txt_password.Password;
-            string fullName = txt_fullName.Text;
-            string phone = txt_phoneNumber.Text;
-            string userName =txt_userName.Text;
+            string email = TxtEmail.Text;
+            string passworld = TxtPassword.Password;
+            string fullName = TxtFullName.Text;
+            string phone = TxtPhone.Text;
             AesEncryption aesEncryption = new AesEncryption();
-            
 
 
 
-           User user = new User();
-            user.Username = userName;
+
+            User user = new User();
             user.Email = email;
             user.FullName = fullName;
             user.PhoneNumber = phone;
-            user.PasswordHash = aesEncryption.Encrypt(passworld,getKey());
+            user.PasswordHash = aesEncryption.Encrypt(passworld, getKey());
             user.Role = "Member";
             user.Points = 0;
             try
             {
                 userService.SaveUser(user);
-                MessageBox.Show("Register Success");
+                MessageBox.Show($"Register Success"
+                       , "Success", MessageBoxButton.OK
+                       , MessageBoxImage.Information);
+
             }
-            catch (Exception ex) {
-                MessageBox.Show("Register False");
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Register False"
+                       , "Error", MessageBoxButton.OK
+                       , MessageBoxImage.Error);
             }
-            
-            
+
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
