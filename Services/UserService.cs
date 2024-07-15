@@ -13,9 +13,9 @@ namespace Services
             this.userRepository = new UserRepository();
         }
 
-        public User CheckLogin(string email, string password)
+        public User CheckLogin(string email, string password,string key)
         {
-            return this.userRepository.CheckLogin(email, password);
+            return this.userRepository.CheckLogin(email, password,key);
         }
 
         public void DeleteUser(User user)
