@@ -197,7 +197,6 @@ public partial class MilkShopContext : DbContext
         {
             entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC806E44F3");
 
-            entity.HasIndex(e => e.Username, "UQ__Users__536C85E4F13C1651").IsUnique();
 
             entity.HasIndex(e => e.Email, "UQ__Users__A9D105343DED253F").IsUnique();
 
@@ -208,7 +207,6 @@ public partial class MilkShopContext : DbContext
             entity.Property(e => e.PhoneNumber).HasMaxLength(15);
             entity.Property(e => e.Points).HasDefaultValue(0);
             entity.Property(e => e.Role).HasMaxLength(50);
-            entity.Property(e => e.Username).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Voucher>(entity =>

@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MilkShop
+namespace MilkShop.Views.Customer
 {
     /// <summary>
-    /// Interaction logic for StaffWindow.xaml
+    /// Interaction logic for CustomerWindow.xaml
     /// </summary>
-    public partial class StaffWindow : Window
+    public partial class CustomerWindow : Window
     {
-        public StaffWindow()
+        public CustomerWindow()
         {
             InitializeComponent();
         }

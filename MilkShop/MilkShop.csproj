@@ -9,9 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Assets\fpt-logo.png" />
+    <None Remove="Resources\Assets\img-background-login.jpg" />
     <None Remove="Resources\Assets\img_home.png" />
+    <None Remove="Resources\Assets\key-icon.png" />
+    <None Remove="Resources\Assets\mail.png" />
+    <None Remove="Resources\Assets\phone.png" />
     <None Remove="Resources\Assets\tgBtn_default.png" />
     <None Remove="Resources\Assets\tgBtn_MouseOver.png" />
+    <None Remove="Resources\Assets\user-icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,25 +27,24 @@
 
   <ItemGroup>
     <Folder Include="Resources\Db\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Assets\fpt-logo.png" />
+    <Resource Include="Resources\Assets\img-background-login.jpg" />
     <Resource Include="Resources\Assets\img_home.png" />
+    <Resource Include="Resources\Assets\key-icon.png" />
+    <Resource Include="Resources\Assets\mail.png" />
+    <Resource Include="Resources\Assets\phone.png" />
     <Resource Include="Resources\Assets\tgBtn_default.png" />
     <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />
+    <Resource Include="Resources\Assets\user-icon.png" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="LoginWindow.xaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Page>
   </ItemGroup>
 
 </Project>

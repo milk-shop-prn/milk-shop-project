@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MilkShop
+namespace MilkShop.Views.Admin
 {
     /// <summary>
-    /// Interaction logic for UserWindow.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class UserWindow : Window
+    public partial class AdminWindow : Window
     {
-        public UserWindow()
+        public AdminWindow()
         {
             InitializeComponent();
         }

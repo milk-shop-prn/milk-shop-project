@@ -1,5 +1,4 @@
-﻿using BusinessObjects.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,22 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MilkShop
+namespace MilkShop.Views.Staff
 {
     /// <summary>
-    /// Interaction logic for AdminWindow.xaml
+    /// Interaction logic for StaffWindow.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class StaffWindow : Window
     {
-        public AdminWindow()
+        public StaffWindow()
         {
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            User account = Application.Current.Properties["Account"] as User;
-            txt_UserName.Content = account.FullName;
         }
     }
 }
