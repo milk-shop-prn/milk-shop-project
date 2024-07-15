@@ -39,6 +39,9 @@ namespace MilkShop.Views.Customer
                     case "Profile":
                         ContentArea.Content = new ProfileControl();
                         break;
+                    case "Blog":
+                        ContentArea.Content = new BlogControl();
+                        break;
                     case "History":
                         ContentArea.Content = new HistoryControl();
                         break;
@@ -86,14 +89,14 @@ namespace MilkShop.Views.Customer
             Tg_Btn.IsChecked = false;
         }
 
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        //private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Application.Current.Shutdown();
+        //}
 
-        private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
+        //private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
+        //{
+        //    WindowState = WindowState.Minimized;
+        //}
     }
 }

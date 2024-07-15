@@ -108,10 +108,9 @@ CREATE TABLE Reports (
 -- Thêm dữ liệu giả vào bảng Users
 INSERT INTO Users (PasswordHash, FullName, Email, PhoneNumber, Role, Points)
 VALUES 
-('hashedpassword1', 'Guest One', 'guest1@example.com', '1234567890', 'Guest', 0),
-('hashedpassword2', 'Member One', 'member1@example.com', '0987654321', 'Member', 100),
-('hashedpassword3', 'Staff One', 'staff1@example.com', '1112223333', 'Staff', 0),
-('hashedpassword4', 'Admin One', 'admin1@example.com', '4445556666', 'Admin', 0);
+('rFlzCG8/7dnAfPl941dwLzzvUJzoPopCuhWqmx7Rnyk=', 'admin', 'admin@gmail.com', '1234567890', 'Admin', 0),
+('ICXSc+oUAfzAuY7q+n3i5a6LMihWZhiA18uk1v2vMu0=', 'staff', 'staff@gmail.com', '0987654321', 'Staff', 100),
+('hqHicGVjtcUdG3He5NyyC5Q29GCYhZ0jEPKA96vdDfI=', 'customer', 'customer@gmail.com', '1112223333', 'Member', 0);
 
 -- Thêm dữ liệu giả vào bảng Products
 INSERT INTO Products (ProductName, Description, Price, Stock, Category, ImageURL)

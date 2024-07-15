@@ -13,7 +13,11 @@
     <None Remove="Resources\Assets\closeBtn_MouseOver.png" />
     <None Remove="Resources\Assets\fpt-logo.png" />
     <None Remove="Resources\Assets\img-background-login.jpg" />
+    <None Remove="Resources\Assets\img-blog.png" />
+    <None Remove="Resources\Assets\img-dashboard.png" />
     <None Remove="Resources\Assets\img-history.png" />
+    <None Remove="Resources\Assets\img-order.png" />
+    <None Remove="Resources\Assets\img-product.png" />
     <None Remove="Resources\Assets\img_contact.png" />
     <None Remove="Resources\Assets\img_home.png" />
     <None Remove="Resources\Assets\img_signout.png" />
@@ -26,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
@@ -39,7 +42,11 @@
     <Resource Include="Resources\Assets\closeBtn_MouseOver.png" />
     <Resource Include="Resources\Assets\fpt-logo.png" />
     <Resource Include="Resources\Assets\img-background-login.jpg" />
+    <Resource Include="Resources\Assets\img-blog.png" />
+    <Resource Include="Resources\Assets\img-dashboard.png" />
     <Resource Include="Resources\Assets\img-history.png" />
+    <Resource Include="Resources\Assets\img-order.png" />
+    <Resource Include="Resources\Assets\img-product.png" />
     <Resource Include="Resources\Assets\img_contact.png" />
     <Resource Include="Resources\Assets\img_home.png" />
     <Resource Include="Resources\Assets\img_signout.png" />

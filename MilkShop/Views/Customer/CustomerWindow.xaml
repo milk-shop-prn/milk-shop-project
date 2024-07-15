@@ -56,49 +56,6 @@
 
         </Style>
 
-        <!--// App Close Button Style Template //-->
-
-        <ImageBrush x:Key="CloseBtn_MouseOver" ImageSource="../../Resources/Assets/closeBtn_MouseOver.png"/>
-
-        <Style x:Key="Close_btn" TargetType="{x:Type Button}">
-
-            <Setter Property="Template">
-
-                <Setter.Value>
-
-                    <ControlTemplate TargetType="{x:Type Button}">
-
-                        <Border x:Name="button"
-                            BorderThickness="0"
-                            Background="{TemplateBinding Background}"
-                            SnapsToDevicePixels="True">
-
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-
-                            <Trigger Property="IsMouseOver"
-                                 Value="True">
-
-                                <Setter Property="Background"
-                                    TargetName="button"
-                                    Value="{StaticResource CloseBtn_MouseOver}"/>
-
-                            </Trigger>
-
-                        </ControlTemplate.Triggers>
-
-                    </ControlTemplate>
-
-                </Setter.Value>
-
-            </Setter>
-
-        </Style>
-
-
-
-
         <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
 
             <Setter Property="Template">
@@ -178,70 +135,6 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
-
-            <!--// App Close Button //-->
-            <Grid>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="60"/>
-                    <ColumnDefinition Width="60"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Button x:Name="MinimizeBtn"
-        Grid.Column="1"
-        Grid.Row="0"
-        Height="40"
-        Width="40"
-        BorderThickness="0"
-        Cursor="Hand"
-        Background="Transparent"
-        Click="MinimizeBtn_Click"
-        VerticalAlignment="Top"
-        Margin="0,0,0,0">
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <TextBlock x:Name="ButtonText" 
-                       Text="-" 
-                       FontSize="60"
-                       FontWeight="Normal"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Foreground="Black"/>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ButtonText" Property="Foreground" Value="Red"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-
-                <Button x:Name="CloseBtn"
-            Grid.Column="2"
-            Grid.Row="0"
-            Height="40"
-            Width="40"
-            BorderThickness="0"
-            Cursor="Hand"
-            Style="{StaticResource Close_btn}" Click="CloseBtn_Click">
-
-                    <Button.Background>
-
-                        <ImageBrush ImageSource="../../Resources/Assets/closeBtn_default.png"/>
-
-                    </Button.Background>
-
-                </Button>
-
-            </Grid>
 
             <!--// Navigation Panel //-->
             <Grid   x:Name="nav_pnl"
@@ -427,6 +320,39 @@
                                 <ToolTip x:Name="tt_profile"
                              Content="Profile"
                              Style="{StaticResource tt_style}"/>
+
+                            </ListViewItem.ToolTip>
+
+                        </ListViewItem>
+
+                        <!--// Blog //-->
+
+                        <ListViewItem HorizontalAlignment="Left"
+                              Margin="0,0,0,15" 
+                              Cursor="Hand"
+                              MouseEnter="ListViewItem_MouseEnter"
+                              Tag="Blog">
+
+                            <StackPanel Orientation="Horizontal"
+                                    Width="300">
+
+                                <Image Source="../../Resources/Assets/img-blog.png"
+                                       Stretch="Fill"
+                                       Margin="7,0,0,0"/>
+
+                                <TextBlock Text="Blog"
+                                       Margin="15,0,0,0"
+                                       Style="{StaticResource font_style}"/>
+
+                            </StackPanel>
+
+                            <!--// Tooltip //-->
+
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip x:Name="tt_blog"
+                                     Content="Blog"
+                                     Style="{StaticResource tt_style}"/>
 
                             </ListViewItem.ToolTip>
 
