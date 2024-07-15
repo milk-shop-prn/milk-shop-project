@@ -1,6 +1,7 @@
 ﻿using BusinessObjects.Models;
 using Microsoft.Extensions.Configuration;
 using MilkShop.config;
+using MilkShop.Views.Customer;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,9 @@ namespace MilkShop.Views.Auth
                 MessageBox.Show($"Register Success"
                        , "Success", MessageBoxButton.OK
                        , MessageBoxImage.Information);
+                CustomerWindow userWindow = new CustomerWindow();
+                userWindow.Show();
+                this.Close();
 
             }
             catch (Exception ex)

@@ -9,9 +9,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Assets\closeBtn_default.png" />
+    <None Remove="Resources\Assets\closeBtn_MouseOver.png" />
     <None Remove="Resources\Assets\fpt-logo.png" />
     <None Remove="Resources\Assets\img-background-login.jpg" />
+    <None Remove="Resources\Assets\img-history.png" />
+    <None Remove="Resources\Assets\img_contact.png" />
     <None Remove="Resources\Assets\img_home.png" />
+    <None Remove="Resources\Assets\img_signout.png" />
     <None Remove="Resources\Assets\key-icon.png" />
     <None Remove="Resources\Assets\mail.png" />
     <None Remove="Resources\Assets\phone.png" />
@@ -30,9 +35,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Assets\closeBtn_default.png" />
+    <Resource Include="Resources\Assets\closeBtn_MouseOver.png" />
     <Resource Include="Resources\Assets\fpt-logo.png" />
     <Resource Include="Resources\Assets\img-background-login.jpg" />
+    <Resource Include="Resources\Assets\img-history.png" />
+    <Resource Include="Resources\Assets\img_contact.png" />
     <Resource Include="Resources\Assets\img_home.png" />
+    <Resource Include="Resources\Assets\img_signout.png" />
     <Resource Include="Resources\Assets\key-icon.png" />
     <Resource Include="Resources\Assets\mail.png" />
     <Resource Include="Resources\Assets\phone.png" />
