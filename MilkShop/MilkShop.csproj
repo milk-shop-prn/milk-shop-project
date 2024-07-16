@@ -27,6 +27,7 @@
     <None Remove="Resources\Assets\tgBtn_default.png" />
     <None Remove="Resources\Assets\tgBtn_MouseOver.png" />
     <None Remove="Resources\Assets\user-icon.png" />
+    <None Remove="Views\Staff\Control\img-background-login.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,6 +57,7 @@
     <Resource Include="Resources\Assets\tgBtn_default.png" />
     <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />
     <Resource Include="Resources\Assets\user-icon.png" />
+    <Resource Include="Views\Staff\Control\img-background-login.jpg" />
   </ItemGroup>
 
   <ItemGroup>

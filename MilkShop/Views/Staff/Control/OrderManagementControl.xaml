@@ -6,7 +6,33 @@
              xmlns:local="clr-namespace:MilkShop.Views.Staff.Control"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Order Management" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    </Grid>
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Views/Staff/Control/img-background-login.jpg"
+            Stretch="Fill"/>
+        </Border.Background>
+
+        <Border CornerRadius="10"                    
+BorderThickness="2"
+Opacity="0.95">
+
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#462AD8" Offset="0.75"/>
+                    <GradientStop Color="#462AD8" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF464676" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid/>
+
+        </Border>
+    </Border>
 </UserControl>
