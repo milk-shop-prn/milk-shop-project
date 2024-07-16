@@ -46,11 +46,8 @@ namespace MilkShop.Views.Auth
             string passworld = TxtPassword.Password;
             string fullName = TxtFullName.Text;
             string phone = TxtPhone.Text;
+            
             AesEncryption aesEncryption = new AesEncryption();
-
-
-
-
             User user = new User();
             user.Email = email;
             user.FullName = fullName;
@@ -58,12 +55,15 @@ namespace MilkShop.Views.Auth
             user.PasswordHash = aesEncryption.Encrypt(passworld, getKey());
             user.Role = "Member";
             user.Points = 0;
+
+            MessageBox.Show(user.PasswordHash);
             try
             {
                 userService.SaveUser(user);
                 MessageBox.Show($"Register Success"
                        , "Success", MessageBoxButton.OK
                        , MessageBoxImage.Information);
+                Application.Current.Properties["Account"] = user;
                 CustomerWindow userWindow = new CustomerWindow();
                 userWindow.Show();
                 this.Close();

@@ -46,6 +46,7 @@ namespace MilkShop.Views.Customer
                         ContentArea.Content = new HistoryControl();
                         break;
                     case "SignOut":
+                        Application.Current.Properties["Account"] = null;
                         LoginWindow login = new LoginWindow();
                         login.Show();
                         this.Close();
@@ -87,6 +88,22 @@ namespace MilkShop.Views.Customer
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Tg_Btn.IsChecked = false;
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+        public void NavigateToHome()
+        {
+            ContentArea.Content = new HomeControl();
+        }
+
+        public void NavigateToProfile()
+        {
+            ContentArea.Content = new ProfileControl();
         }
 
         //private void CloseBtn_Click(object sender, RoutedEventArgs e)

@@ -24,12 +24,15 @@
     <None Remove="Resources\Assets\key-icon.png" />
     <None Remove="Resources\Assets\mail.png" />
     <None Remove="Resources\Assets\phone.png" />
+    <None Remove="Resources\Assets\search-alt-2-regular-24.png" />
     <None Remove="Resources\Assets\tgBtn_default.png" />
     <None Remove="Resources\Assets\tgBtn_MouseOver.png" />
     <None Remove="Resources\Assets\user-icon.png" />
+    <None Remove="Resources\Assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
@@ -53,15 +56,25 @@
     <Resource Include="Resources\Assets\key-icon.png" />
     <Resource Include="Resources\Assets\mail.png" />
     <Resource Include="Resources\Assets\phone.png" />
+    <Resource Include="Resources\Assets\search-alt-2-regular-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Assets\tgBtn_default.png" />
     <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />
     <Resource Include="Resources\Assets\user-icon.png" />
+    <Resource Include="Resources\Assets\user.png" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\Auth\RegisterWindow.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
 
 </Project>
