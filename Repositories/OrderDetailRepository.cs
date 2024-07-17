@@ -15,10 +15,14 @@ namespace Repositories
         public OrderDetail GetOrderDetailById(int id)
             => OrderDetailDAO.Instance.GetOrderDetailById(id);
 
-        public void SaveOrderDetail(OrderDetail orderDetail)
+        public List<OrderDetail> GetOrderDetailsByOrderId(int orderId)
+            => OrderDetailDAO.Instance.GetOrderDetailsByOrderId(orderId);
+
+		public void SaveOrderDetail(OrderDetail orderDetail)
             => OrderDetailDAO.Instance.SaveOrderDetail(orderDetail);
 
         public void UpdateOrderDetail(OrderDetail orderDetail)
             => OrderDetailDAO.Instance.UpdateOrderDetail(orderDetail);
+
     }
 }

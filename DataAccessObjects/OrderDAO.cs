@@ -32,6 +32,7 @@ namespace DataAccessObjects
         {
             using var db = new MilkShopContext();
             return db.Orders
+                .Include(o => o.User)
                 .Include(o => o.OrderDetails)
                 .ThenInclude(o => o.Product)
                 .ToList();

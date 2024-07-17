@@ -4,18 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MilkShop.Views.Staff.Control"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" Loaded="UserControl_Loaded" Height="816" Width="1051">
     <Border>
         <Border.Background>
             <ImageBrush ImageSource="/Views/Staff/Control/img-background-login.jpg"
-            Stretch="Fill"/>
+        Stretch="Fill"/>
         </Border.Background>
 
-        <Border CornerRadius="10"                    
-BorderThickness="2"
-Opacity="0.95">
-
+        <Border CornerRadius="10" BorderThickness="2" Opacity="0.95">
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#462AD8" Offset="0"/>
@@ -31,8 +27,55 @@ Opacity="0.95">
                 </LinearGradientBrush>
             </Border.Background>
 
-            <Grid/>
+            <Grid>
 
+                <DataGrid x:Name="dbOrder" Margin="664,10,10,515" AutoGenerateColumns="False" SelectionChanged="dbOrder_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order ID" Binding="{Binding OrderId}"/>
+                        <DataGridTextColumn Header="User Name" Binding="{Binding User.FullName}"/>
+                        <DataGridTextColumn Header="Order Date" Binding="{Binding OrderDate}"/>
+                        <DataGridTextColumn Header="Total Price" Binding="{Binding TotalPrice}"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding OrderStatus}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <DataGrid x:Name="dbOrderDetails" Margin="664,436,10,89" AutoGenerateColumns="False" SelectionChanged="dbOrderDetails_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Order Detail ID" Binding="{Binding OrderDetailId}"/>
+                        <DataGridTextColumn Header="Order ID" Binding="{Binding OrderId}"/>
+                        <DataGridTextColumn Header="Product name" Binding="{Binding Product.ProductName}"/>
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding UnitPrice}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Label Content="Order ID" HorizontalAlignment="Left" Margin="14,23,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtOrderID" HorizontalAlignment="Left" Margin="111,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+
+                <Label Content="Username" HorizontalAlignment="Left" Margin="322,23,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <ComboBox x:Name="listName" HorizontalAlignment="Left" Margin="419,23,0,0" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
+                <Label Content="Order Date" HorizontalAlignment="Left" Margin="14,83,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <DatePicker x:Name="orderDate" HorizontalAlignment="Left" Margin="111,83,0,0" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+
+                <Label Content="Total Price" HorizontalAlignment="Left" Margin="322,83,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtTotalPrice" HorizontalAlignment="Left" Margin="419,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+
+                <Label Content="Status" HorizontalAlignment="Left" Margin="14,143,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtStatus" HorizontalAlignment="Left" Margin="111,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+
+                <Label Content="Product" HorizontalAlignment="Left" Margin="14,438,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <ComboBox x:Name="listProduct" HorizontalAlignment="Left" Margin="111,438,0,0" VerticalAlignment="Top" Width="172" Height="31"/>
+                <Button x:Name="btnAdd" Content="Add product to order" HorizontalAlignment="Left" Margin="322,441,0,0" VerticalAlignment="Top" Height="28" Width="166" FontSize="16" Click="btnAdd_Click"/>
+                
+                
+                <Button x:Name="btnNew" Content="New order" HorizontalAlignment="Left" Margin="15,205,0,0" VerticalAlignment="Top" Height="28" Width="88" FontSize="16" Click="btnNew_Click"/>
+                <Button x:Name="btnUpdate" Content="Update order" HorizontalAlignment="Left" Margin="127,205,0,0" VerticalAlignment="Top" Height="28" Width="107" FontSize="16" Click="btnUpdate_Click"/>
+                <Button x:Name="btnSave" Content="Save order" HorizontalAlignment="Left" Margin="259,205,0,0" VerticalAlignment="Top" Height="28" Width="107" FontSize="16" Click="btnSave_Click" IsEnabled="False"/>
+                <Button x:Name="btnDelete" Content="Delete order" HorizontalAlignment="Left" Margin="389,205,0,0" VerticalAlignment="Top" Height="28" Width="107" FontSize="16" Click="btnDelete_Click"/>
+
+
+            </Grid>
         </Border>
     </Border>
 </UserControl>

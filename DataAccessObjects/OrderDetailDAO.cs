@@ -1,4 +1,5 @@
 ﻿using BusinessObjects.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,5 +85,14 @@ namespace DataAccessObjects
                 throw new Exception(ex.Message);
             }
         }
-    }
+
+		public List<OrderDetail> GetOrderDetailsByOrderId(int orderId)
+		{
+			using var db = new MilkShopContext();
+			return db.OrderDetails
+                .Include(o => o.Product)
+                .Where(o => o.OrderId == orderId)
+                .ToList();
+		}
+	}
 }
