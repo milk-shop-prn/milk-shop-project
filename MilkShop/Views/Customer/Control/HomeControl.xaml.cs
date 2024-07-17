@@ -1,5 +1,7 @@
 ﻿using BusinessObjects.Models;
 using DataAccessObjects;
+using DTO.Request;
+using Microsoft.IdentityModel.Tokens;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -16,26 +18,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Image = System.Windows.Controls.Image;
 
 namespace MilkShop.Views.Customer.Control
 {
     /// <summary>
     /// Interaction logic for HomeControl.xaml
     /// </summary>
-    public partial class HomeControl : UserControl
+    public partial class HomeControl : Page
     {
-        private ProductService productService;
+        private IProductService productService;
+        public event EventHandler ShowProductDetail;
+        private IOrderService orderService;
         public HomeControl()
         {
             InitializeComponent();
             productService = new ProductService();
-            
+            orderService = new OrderService();  
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             List<Product> ListProducts = productService.GetAll();
             ProductsItemsControl.ItemsSource=ListProducts;
+            var list = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
+            if(list != null)
+            {
+                txt_change.Text = list.Count().ToString();
+            }
+            else
+            {
+                txt_change.Text = "0";
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,12 +84,63 @@ namespace MilkShop.Views.Customer.Control
                 List<Product> findListProduc = productService.GetAll();
                 ProductsItemsControl.ItemsSource = findListProduc;
             }
-
           
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            Button button = sender as Button;
+            if (button != null && button.CommandParameter != null)
+            {
+                int productId = (int)button.CommandParameter;
+                var product = productService.GetProductById(productId);
+
+                List<BookingProductRequest> listProducts = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
+                
+                if (!listProducts.IsNullOrEmpty())
+                {
+                    var findBooking = listProducts.FirstOrDefault(x => x.ProductId == productId);
+                    if (findBooking != null)
+                    {
+                        findBooking.quality += 1;
+                    }
+                    else
+                    {
+                        BookingProductRequest bookingProductRequest = new BookingProductRequest();
+                        bookingProductRequest.ProductId = product.ProductId;
+                        bookingProductRequest.ProductName = product.ProductName;
+                        bookingProductRequest.Price = product.Price;
+                        bookingProductRequest.Stock = product.Stock;
+                        bookingProductRequest.Description = product.Description;
+                        bookingProductRequest.Category = product.Category;
+                        bookingProductRequest.quality = 1;
+                        bookingProductRequest.urlImg = product.ImageUrl;
+                        listProducts.Add(bookingProductRequest);
+                    }
+                    
+                    Application.Current.Properties["listCart"] = listProducts;
+                }
+                else
+                {
+
+                    BookingProductRequest bookingProductRequest = new BookingProductRequest();
+                    bookingProductRequest.ProductId = product.ProductId;
+                    bookingProductRequest.ProductName = product.ProductName;
+                    bookingProductRequest.Price = product.Price;
+                    bookingProductRequest.Stock = product.Stock;
+                    bookingProductRequest.Description = product.Description;
+                    bookingProductRequest.Category = product.Category;
+                    bookingProductRequest.quality = 1;
+                    bookingProductRequest.urlImg = product.ImageUrl;
+                    listProducts.Add(bookingProductRequest);
+                    Application.Current.Properties["listCart"] = listProducts;
+                }
+
+               
+
+            }
+            UserControl_Loaded(sender, e);
+
 
         }
 
@@ -83,7 +148,47 @@ namespace MilkShop.Views.Customer.Control
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            
+           
+        }
 
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+
+
+            if (button != null && button.CommandParameter != null)
+            {
+                int productId = (int)button.CommandParameter;
+                Application.Current.Properties["ProductId"] = productId;
+                NavigationService.Navigate(new Uri("Views/Customer/Control/ViewDetail.xaml", UriKind.Relative));
+            }
+            
+
+        }
+
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Views/Customer/Control/ViewCartControl.xaml", UriKind.Relative));
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ScaleTransform scale = (ScaleTransform)((Image)sender).RenderTransform;
+            scale.ScaleX = 0.8;
+            scale.ScaleY = 0.8;
+        }
+
+        private void Image_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ScaleTransform scale = (ScaleTransform)((Image)sender).RenderTransform;
+            scale.ScaleX = 1;
+            scale.ScaleY = 1;
+        }
+
+        private void txt_change_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
         }
     }
 }

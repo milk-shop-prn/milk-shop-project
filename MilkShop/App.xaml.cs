@@ -9,6 +9,7 @@ namespace MilkShop
     /// </summary>
     public partial class App : Application
     {
+
     }
 
 }

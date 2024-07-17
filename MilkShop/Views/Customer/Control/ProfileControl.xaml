@@ -24,7 +24,7 @@
                     <Label Content="Password" Foreground="#FFF4EEEE" FontSize="16" Width="86" Margin="-485,13,0,0"/>
                     <PasswordBox x:Name="txt_password"  Width="321" Margin="-76,-29,0,0" FontSize="16" ></PasswordBox>
                     <Label Content="Phone" Foreground="#FFF3ECEC" FontSize="16" Width="58" Margin="-514,14,0,0"/>
-                    <TextBox x:Name="txt_phone" Text="" IsReadOnly="True" Height="29" Margin="-78,-29,0,0" Width="322" FontSize="16" ></TextBox>
+                    <TextBox x:Name="txt_phone" Text="" Height="29" Margin="-78,-29,0,0" Width="322" FontSize="16" ></TextBox>
                     <Label Content="Points" Foreground="#FFF0E9E9" FontSize="16" Width="63" Margin="-508,16,0,0"/>
                     <TextBox x:Name="txt_points" Text="" IsReadOnly="True" Width="320" Margin="-77,-30,0,0" ></TextBox>
                     <Button Content="Update" Margin="-230,62,0,2" Height="36" Width="140" FontSize="16" Click="Button_Click" BorderThickness="4,0,1,1"></Button>

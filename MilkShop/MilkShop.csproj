@@ -29,10 +29,12 @@
     <None Remove="Resources\Assets\tgBtn_MouseOver.png" />
     <None Remove="Resources\Assets\user-icon.png" />
     <None Remove="Resources\Assets\user.png" />
+    <None Remove="Views\Customer\Control\cart-add-regular-24.png" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
+    <ProjectReference Include="..\DTO\DTO.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
@@ -63,6 +65,7 @@
     <Resource Include="Resources\Assets\tgBtn_MouseOver.png" />
     <Resource Include="Resources\Assets\user-icon.png" />
     <Resource Include="Resources\Assets\user.png" />
+    <Resource Include="Resources\Assets\cart-add-regular-24.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +76,13 @@
 
   <ItemGroup>
     <Page Update="Views\Auth\RegisterWindow.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Update="Views\Customer\Control\ViewCartControl.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Customer\Control\ViewDetail.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>

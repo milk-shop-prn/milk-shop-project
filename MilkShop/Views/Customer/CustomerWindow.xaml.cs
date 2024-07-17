@@ -1,6 +1,9 @@
-﻿using MilkShop.Views.Auth;
+﻿using BusinessObjects.Models;
+using DTO.Request;
+using MilkShop.Views.Auth;
 using MilkShop.Views.Customer.Control;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +24,13 @@ namespace MilkShop.Views.Customer
     /// </summary>
     public partial class CustomerWindow : Window
     {
+
+        private List<BookingProductRequest> listCart = new List<BookingProductRequest>();
         public CustomerWindow()
         {
             InitializeComponent();
             LV.SelectedIndex = 0;
+            Application.Current.Properties["listCart"] = listCart;
         }
 
         private void LV_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -34,7 +40,7 @@ namespace MilkShop.Views.Customer
                 switch (selectedItem.Tag.ToString())
                 {
                     case "Home":
-                        ContentArea.Content = new HomeControl();
+                        ContentArea.NavigationService.Navigate(new Uri("Views/Customer/Control/HomeControl.xaml", UriKind.Relative));
                         break;
                     case "Profile":
                         ContentArea.Content = new ProfileControl();
@@ -96,15 +102,7 @@ namespace MilkShop.Views.Customer
         }
 
 
-        public void NavigateToHome()
-        {
-            ContentArea.Content = new HomeControl();
-        }
-
-        public void NavigateToProfile()
-        {
-            ContentArea.Content = new ProfileControl();
-        }
+        
 
         //private void CloseBtn_Click(object sender, RoutedEventArgs e)
         //{
@@ -115,5 +113,7 @@ namespace MilkShop.Views.Customer
         //{
         //    WindowState = WindowState.Minimized;
         //}
+
+    
     }
 }
