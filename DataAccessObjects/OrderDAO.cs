@@ -1,4 +1,5 @@
 ﻿using BusinessObjects.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,19 @@ namespace DataAccessObjects
         public List<Order> GetAll()
         {
             using var db = new MilkShopContext();
-            return db.Orders.ToList();
+            return db.Orders
+                .Include(o => o.OrderDetails)
+                .ThenInclude(o => o.Product)
+                .ToList();
         }
 
         public Order GetOrderById(int id)
         {
             using var db = new MilkShopContext();
-            return db.Orders.FirstOrDefault(o => o.OrderId.Equals(id));
+            return db.Orders
+				.Include(o => o.OrderDetails)
+				.ThenInclude(o => o.Product)
+				.FirstOrDefault(o => o.OrderId.Equals(id));
         }
 
         public void SaveOrder(Order order)

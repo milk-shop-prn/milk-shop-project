@@ -30,6 +30,7 @@
     <None Remove="Resources\Assets\user-icon.png" />
     <None Remove="Resources\Assets\user.png" />
     <None Remove="Views\Customer\Control\cart-add-regular-24.png" />
+    <None Remove="Views\Staff\Control\img-background-login.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -66,6 +67,7 @@
     <Resource Include="Resources\Assets\user-icon.png" />
     <Resource Include="Resources\Assets\user.png" />
     <Resource Include="Resources\Assets\cart-add-regular-24.png" />
+    <Resource Include="Views\Staff\Control\img-background-login.jpg" />
   </ItemGroup>
 
   <ItemGroup>
