@@ -38,9 +38,9 @@ namespace Services
             this.userRepository.SaveUser(user);
         }
 
-        public void UpdateUser(User user)
-        {
-            this.userRepository.UpdateUser(user);
-        }
+        public bool UpdateUser(User user)
+        
+            =>userRepository.UpdateUser(user);
+        
     }
 }

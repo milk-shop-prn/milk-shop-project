@@ -12,9 +12,9 @@ namespace Services
     {
         private readonly IVoucherRepository voucherRepository;
 
-        public VoucherService(IVoucherRepository voucherRepository)
+        public VoucherService( )
         {
-            this.voucherRepository = voucherRepository;
+            this.voucherRepository = new VoucherRepository();
         }
 
         public void DeleteVoucher(Voucher voucher)

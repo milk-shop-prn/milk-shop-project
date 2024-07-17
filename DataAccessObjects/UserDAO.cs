@@ -30,6 +30,7 @@ namespace DataAccessObjects
             }
         }
 
+
         public User CheckLogin(string email, string password, string key)
         {
             AesEncryption aesEncryption = new AesEncryption();
@@ -72,17 +73,21 @@ namespace DataAccessObjects
             }
         }
 
-        public void UpdateUser(User user)
+  
+        public bool UpdateUser(User user)
         {
             try
             {
+                AesEncryption aesEncryption = new AesEncryption();
                 using var db = new MilkShopContext();
                 db.Entry<User>(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
+                return true;
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
+                return false;
             }
         }
 

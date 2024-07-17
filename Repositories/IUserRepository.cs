@@ -13,7 +13,7 @@ namespace Repositories
 
         void SaveUser(User user);
 
-        void UpdateUser(User user);
+        bool UpdateUser(User user);
 
         void DeleteUser(User user);
     }

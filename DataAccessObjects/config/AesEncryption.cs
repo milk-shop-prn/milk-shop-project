@@ -35,29 +35,40 @@ namespace MilkShop.config
             }
         }
 
-        public  string Decrypt(string cipherText, string key)
+        public string Decrypt(string cipherText, string key)
         {
-            byte[] fullCipher = Convert.FromBase64String(cipherText);
-            using (Aes aes = Aes.Create())
+            try
             {
-                byte[] iv = new byte[aes.BlockSize / 8];
-                byte[] cipher = new byte[fullCipher.Length - iv.Length];
+                byte[] fullCipher = Convert.FromBase64String(cipherText);
 
-                Array.Copy(fullCipher, iv, iv.Length);
-                Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
-
-                byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-                Array.Resize(ref keyBytes, aes.Key.Length); 
-                aes.Key = keyBytes;
-
-                using (var decryptor = aes.CreateDecryptor(aes.Key, iv))
-                using (var ms = new MemoryStream(cipher))
-                using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
-                using (var sr = new StreamReader(cs))
+                using (Aes aes = Aes.Create())
                 {
-                    return sr.ReadToEnd();
+                    byte[] iv = new byte[aes.BlockSize / 8];
+                    byte[] cipher = new byte[fullCipher.Length - iv.Length];
+
+                    Array.Copy(fullCipher, iv, iv.Length);
+                    Array.Copy(fullCipher, iv.Length, cipher, 0, cipher.Length);
+
+                    byte[] keyBytes = Encoding.UTF8.GetBytes(key);
+                    Array.Resize(ref keyBytes, aes.Key.Length);
+                    aes.Key = keyBytes;
+
+                    using (var decryptor = aes.CreateDecryptor(aes.Key, iv))
+                    using (var ms = new MemoryStream(cipher))
+                    using (var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read))
+                    using (var sr = new StreamReader(cs))
+                    {
+                        return sr.ReadToEnd();
+                    }
                 }
             }
+            catch (FormatException ex)
+            {
+                // Handle the format exception (log, notify user, etc.)
+                Console.WriteLine($"Error decoding Base64 string: {ex.Message}");
+                throw; // Optionally rethrow or handle accordingly
+            }
         }
+
     }
 }
