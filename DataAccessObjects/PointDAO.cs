@@ -12,7 +12,7 @@ namespace DataAccessObjects
         private static PointDAO instance = null!;
         private static readonly object lockObject = new object();
 
-        private PointDAO() { }
+        public PointDAO() { }
 
         public static PointDAO Instance
         {
