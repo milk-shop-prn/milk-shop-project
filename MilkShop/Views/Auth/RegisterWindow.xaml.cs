@@ -55,8 +55,9 @@ namespace MilkShop.Views.Auth
             user.PasswordHash = aesEncryption.Encrypt(passworld, getKey());
             user.Role = "Member";
             user.Points = 0;
+            user.Deleted = false;
 
-            MessageBox.Show(user.PasswordHash);
+           
             try
             {
                 userService.SaveUser(user);
@@ -71,6 +72,7 @@ namespace MilkShop.Views.Auth
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message.ToString());
                 MessageBox.Show($"Register False"
                        , "Error", MessageBoxButton.OK
                        , MessageBoxImage.Error);
