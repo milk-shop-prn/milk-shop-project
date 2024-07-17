@@ -21,7 +21,7 @@ namespace Repositories
         public void SaveUser(User user)
             => UserDAO.Instance.SaveUser(user);
 
-        public void UpdateUser(User user)
+        public bool UpdateUser(User user)
             => UserDAO.Instance.UpdateUser(user);
     }
 }

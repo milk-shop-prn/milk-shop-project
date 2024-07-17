@@ -19,6 +19,8 @@ public partial class User
 
     public int? Points { get; set; }
 
+    public bool? Deleted { get; set; }
+
     public virtual ICollection<Article> Articles { get; set; } = new List<Article>();
 
     public virtual ICollection<Consultation> Consultations { get; set; } = new List<Consultation>();

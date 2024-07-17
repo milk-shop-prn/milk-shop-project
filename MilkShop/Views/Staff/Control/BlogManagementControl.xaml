@@ -4,9 +4,57 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MilkShop.Views.Staff.Control"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Blog Management" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    </Grid>
+             mc:Ignorable="d" Width="995" Height="487" Loaded="ArticleControl_Loaded">
+    <Border>
+        <Border.Background>
+            <ImageBrush ImageSource="/Views/Staff/Control/img-background-login.jpg"
+            Stretch="Fill"/>
+        </Border.Background>
+
+        <Border CornerRadius="10" BorderThickness="2" Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#462AD8" Offset="0.75"/>
+                    <GradientStop Color="#462AD8" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF464676" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <TextBlock Text="Mangage Article" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <DataGrid x:Name="dbArticle" Margin="444,44,10,87" AutoGenerateColumns="False" SelectionChanged="DbArticle_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Article ID" Binding="{Binding ArticleId}"/>
+                        <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+                        <DataGridTextColumn Header="Content" Binding="{Binding Content}"/>
+                        <DataGridTextColumn Header="Author ID" Binding="{Binding AuthorId}"/>
+                        <DataGridTextColumn Header="Publish date" Binding="{Binding PublishDate}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <Label Content="Article ID" HorizontalAlignment="Left" Margin="44,51,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtArticleID" HorizontalAlignment="Left" Margin="183,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                <Label Content="Title" HorizontalAlignment="Left" Margin="44,103,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="183,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                <Label Content="Content" HorizontalAlignment="Left" Margin="44,157,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtContent" HorizontalAlignment="Left" Margin="183,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                <Label Content="Author ID" HorizontalAlignment="Left" Margin="44,209,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <TextBox x:Name="txtAuthorID" HorizontalAlignment="Left" Margin="183,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                <Label Content="Publish date" HorizontalAlignment="Left" Margin="44,260,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
+                <DatePicker x:Name="dpPublishDate" HorizontalAlignment="Left" Margin="183,260,0,0" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                <Button x:Name="btnNew" Content="New" HorizontalAlignment="Left" Margin="32,424,0,0" VerticalAlignment="Top" Height="28" Width="70" FontSize="16" Click="btnNew_Click"/>
+                <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="134,424,0,0" VerticalAlignment="Top" Height="28" Width="70" FontSize="16" Click="btnUpdate_Click"/>
+                <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="242,424,0,0" VerticalAlignment="Top" Height="28" Width="70" FontSize="16" IsEnabled="False" Click="btnSave_Click"/>
+                <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="342,424,0,0" VerticalAlignment="Top" Height="28" Width="70" FontSize="16" Click="btnDelete_Click"/>
+            </Grid>
+        </Border>
+    </Border>
 </UserControl>

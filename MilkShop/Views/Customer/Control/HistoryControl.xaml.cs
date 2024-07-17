@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessObjects.Models;
+using BusinessObjects.Request;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,11 @@ namespace MilkShop.Views.Customer.Control
         public HistoryControl()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

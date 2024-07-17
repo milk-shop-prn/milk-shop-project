@@ -46,7 +46,7 @@ namespace MilkShop.Views.Auth
             string email = TxtEmail.Text;
             string password = TxtPassword.Password;
 
-            AesEncryption aesEncryption = new AesEncryption();
+
             User account = userService.CheckLogin(email, password, getKey());
             if (account != null)
             {
