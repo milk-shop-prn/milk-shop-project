@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Milk Shop" Height="800" Width="1200"
         WindowStartupLocation="CenterScreen">
-     
+
     <Window.Resources>
 
         <!--// Toggle Button Style Template //-->
@@ -112,18 +112,9 @@
     <Grid>
 
         <Grid Background="Black">
-           
+
             <!--// Background Image //-->
-            <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown">
-                <Grid.Background>
-
-                    <ImageBrush x:Name="img_bg"
-                    ImageSource="../../Resources/Assets/img-background-login.jpg"
-                    Stretch="Fill"></ImageBrush>
-                   
-
-                </Grid.Background>
-
+            <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown" Background="#bae6fd">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -146,6 +137,7 @@
                         <Grid   x:Name="nav_pnl"
         HorizontalAlignment="Left"
         Width="65"
+                                Panel.ZIndex="50"
         Background="#2E333A" Height="783">
 
                             <StackPanel x:Name="st_pnl">
@@ -363,8 +355,8 @@
                                         </ListViewItem.ToolTip>
 
                                     </ListViewItem>
-                                    
-                                    
+
+
 
 
                                     <!--// History //-->

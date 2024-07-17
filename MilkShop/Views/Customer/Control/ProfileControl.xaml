@@ -12,20 +12,20 @@
     <Grid>
         <StackPanel>
             <Image Height="169" Width="482" Source="/Resources/Assets/user.png" Margin="0,23,0,0"></Image>
-            <Label Content="Your Information" Height="83" Foreground="#FFF8F1F1" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,33,0,0"></Label>
+            <Label Content="Your Information" Height="83" Foreground="#1f2937" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,33,0,0"></Label>
             <Border HorizontalAlignment="Center" Margin="38,0,0,0" >
                 <StackPanel Width="658" Height="434">
-                    <Label Content="User Id" Foreground="#FFF3E8E8" FontSize="16" Width="74" Margin="-486,0,0,0"/>
+                    <Label Content="User Id" Foreground="#1f2937" FontSize="16" Width="74" Margin="-486,0,0,0"/>
                     <TextBox x:Name="txt_userId" Text="" IsReadOnly="True" Width="198" Height="29" Margin="-203,-29,0,0" FontSize="16" ></TextBox>
-                    <Label Content="Full Name" Foreground="#FFF9F4F4" FontSize="16" Width="90" Margin="-481,18,0,0"/>
+                    <Label Content="Full Name" Foreground="#1f2937" FontSize="16" Width="90" Margin="-481,18,0,0"/>
                     <TextBox x:Name="txt_fullName" Height="25" Margin="-75,-28,0,0" Width="324" FontSize="16"  ></TextBox>
-                    <Label Content="Email" Foreground="#FFFBF8F8" Width="53" Margin="-483,10,0,0" FontSize="16"/>
+                    <Label Content="Email" Foreground="#1f2937" Width="53" Margin="-483,10,0,0" FontSize="16"/>
                     <TextBox x:Name="txt_email" Text="" Width="324" Margin="-75,-26,0,0" FontSize="16"></TextBox>
-                    <Label Content="Password" Foreground="#FFF4EEEE" FontSize="16" Width="86" Margin="-485,13,0,0"/>
+                    <Label Content="Password" Foreground="#1f2937" FontSize="16" Width="86" Margin="-485,13,0,0"/>
                     <PasswordBox x:Name="txt_password"  Width="321" Margin="-76,-29,0,0" FontSize="16" ></PasswordBox>
-                    <Label Content="Phone" Foreground="#FFF3ECEC" FontSize="16" Width="58" Margin="-514,14,0,0"/>
+                    <Label Content="Phone" Foreground="#1f2937" FontSize="16" Width="58" Margin="-514,14,0,0"/>
                     <TextBox x:Name="txt_phone" Text="" Height="29" Margin="-78,-29,0,0" Width="322" FontSize="16" ></TextBox>
-                    <Label Content="Points" Foreground="#FFF0E9E9" FontSize="16" Width="63" Margin="-508,16,0,0"/>
+                    <Label Content="Points" Foreground="#1f2937" FontSize="16" Width="63" Margin="-508,16,0,0"/>
                     <TextBox x:Name="txt_points" Text="" IsReadOnly="True" Width="320" Margin="-77,-30,0,0" ></TextBox>
                     <Button Content="Update" Margin="-230,62,0,2" Height="36" Width="140" FontSize="16" Click="Button_Click" BorderThickness="4,0,1,1"></Button>
                     <Button Content="Back" Height="42" Width="162" Margin="119,-40,0,0"  FontSize="16" Click="Button_Click_1"></Button>

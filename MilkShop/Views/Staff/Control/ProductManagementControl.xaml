@@ -28,10 +28,12 @@
             </Border.Background>
 
             <Grid>
-                <TextBlock Text="Product Management" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="Product Management" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
                 <DataGrid x:Name="dbProduct" Margin="444,44,10,87" AutoGenerateColumns="False" SelectionChanged="DbProduct_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Product ID" Binding="{Binding ProductId}"/>
+                        <DataGridTextColumn Header="Deleted" Binding="{Binding Deleted}"/>
                         <DataGridTextColumn Header="Product name" Binding="{Binding ProductName}"/>
                         <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
                         <DataGridTextColumn Header="Price" Binding="{Binding Price}"/>
