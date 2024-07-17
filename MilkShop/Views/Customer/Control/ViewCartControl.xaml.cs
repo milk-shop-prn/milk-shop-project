@@ -29,6 +29,7 @@ namespace MilkShop.Views.Customer.Control
         private IOrderDetailService orderDetailService;
         private IUserService userService;
         private IPointService pointService;
+        private IProductService productService;
         public ViewCartControl()
         {
             InitializeComponent();
@@ -37,6 +38,7 @@ namespace MilkShop.Views.Customer.Control
             orderDetailService = new OrderDetailService();
             userService = new UserService();
             pointService = new PointService();
+            productService = new ProductService();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -115,6 +117,18 @@ namespace MilkShop.Views.Customer.Control
                     orderDetail.UnitPrice = item.Price * item.quality;
 
                     orderDetailService.SaveOrderDetail(orderDetail);
+                }
+                var listProduct = productService.GetAll();
+                foreach(var item in listProduct)
+                {
+                    foreach(var item2 in list)
+                    {
+                        if(item2.ProductId == item.ProductId)
+                        {
+                            item.Stock -= item2.quality;
+                            productService.UpdateProduct(item);
+                        }
+                    }
                 }
 
 
