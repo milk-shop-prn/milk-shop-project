@@ -12,9 +12,9 @@ namespace Services
     {
         private readonly IPointRepository pointRepository;
 
-        public PointService(IPointRepository pointRepository)
+        public PointService()
         {
-            this.pointRepository = pointRepository;
+            this.pointRepository = new PointRepository();
         }
 
         public void DeletePoint(Point point)

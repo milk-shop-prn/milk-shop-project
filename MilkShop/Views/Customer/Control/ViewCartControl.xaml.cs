@@ -28,6 +28,7 @@ namespace MilkShop.Views.Customer.Control
         private IOrderService orderService;
         private IOrderDetailService orderDetailService;
         private IUserService userService;
+        private IPointService pointService;
         public ViewCartControl()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace MilkShop.Views.Customer.Control
             orderService = new OrderService();
             orderDetailService = new OrderDetailService();
             userService = new UserService();
+            pointService = new PointService();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -119,11 +121,15 @@ namespace MilkShop.Views.Customer.Control
                 bool? isChecked = txt_point.IsChecked;
                 if (isChecked == true)
                 {
-                    var UpdateCustomer = userService.GetUserById(customer.UserId);
-                    UpdateCustomer.Points = 0;
-                    Application.Current.Properties["Account"] = UpdateCustomer;
-                    userService.UpdateUser(UpdateCustomer);
+                    var UpdateCustomer1 = userService.GetUserById(customer.UserId);
+                    UpdateCustomer1.Points = 0;
+                    userService.UpdateUser(UpdateCustomer1);
+                    Application.Current.Properties["Account"] = UpdateCustomer1;
+
                 }
+
+                
+
 
                 if (listVoncher.SelectedItem is Voucher selectionVoncherId)
                 {
@@ -132,7 +138,19 @@ namespace MilkShop.Views.Customer.Control
                     find_voncher.IsUsed = true;
                     voucherService.UpdateVoucher(find_voncher);
                 }
-                Application.Current.Properties["listCart"] = null;
+                BusinessObjects.Models.Point point = new BusinessObjects.Models.Point();
+                point.Points = (int)((int)total_price * 0.01);
+                point.UserId = customer.UserId;
+                point.DateEarned = DateTime.Now;
+                pointService.SavePoint(point);
+                var UpdateCustomer = userService.GetUserById(customer.UserId);
+                UpdateCustomer.Points +=point.Points;
+                userService.UpdateUser(UpdateCustomer);
+                Application.Current.Properties["Account"] = UpdateCustomer;
+
+
+                Application.Current.Properties["listCart"] = new List<BookingProductRequest>();
+
                 MessageBox.Show("Booking Success");
                 NavigationService.Navigate(new Uri("Views/Customer/Control/HomeControl.xaml", UriKind.Relative));
             }
