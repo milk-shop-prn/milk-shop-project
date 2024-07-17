@@ -162,26 +162,40 @@ namespace MilkShop.Views.Staff.Control
 			}
 			else
 			{
-				var user = new User
-				{
-					FullName = txtFullname.Text,
-					Email = txtEmail.Text,
-					PhoneNumber = txtPhonenumber.Text,
-					Role = txtRole.Text,
-					Points = int.Parse(txtPoint.Text),
-					PasswordHash = aesEncryption.Encrypt(txtPassword.Text, getKey()),
-				};
+				
 
                 if (NewOrUpdate)
                 {
+					var user = new User
+					{
+						FullName = txtFullname.Text,
+						Email = txtEmail.Text,
+						PhoneNumber = txtPhonenumber.Text,
+						Role = txtRole.Text,
+						Points = int.Parse(txtPoint.Text),
+						PasswordHash = aesEncryption.Encrypt(txtPassword.Text, getKey()),
+					};
+
 					_repo.SaveUser(user);
 					MessageBox.Show("New user added."
 						   , "Success", MessageBoxButton.OK
 						   , MessageBoxImage.Information);
 					btnNew.Content = "New";
+					btnUpdate.IsEnabled = true;
 				}
 				else
 				{
+					var user = new User
+					{
+						UserId = int.Parse(txtUserID.Text),
+						FullName = txtFullname.Text,
+						Email = txtEmail.Text,
+						PhoneNumber = txtPhonenumber.Text,
+						Role = txtRole.Text,
+						Points = int.Parse(txtPoint.Text),
+						PasswordHash = aesEncryption.Encrypt(txtPassword.Text, getKey()),
+					};
+					
 					_repo.UpdateUser(user);
 					btnUpdate.Content = "Update";
 				}

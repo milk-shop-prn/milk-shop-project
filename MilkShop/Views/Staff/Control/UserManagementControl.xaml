@@ -28,7 +28,6 @@
             </Border.Background>
 
             <Grid>
-                <TextBlock Text="User Management" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <DataGrid x:Name="dbUser" Margin="444,44,10,87" AutoGenerateColumns="False" SelectionChanged="DbUser_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="User ID" Binding="{Binding UserId}"/>
@@ -44,16 +43,22 @@
 
                 <Label Content="User ID" HorizontalAlignment="Left" Margin="44,51,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtUserID" HorizontalAlignment="Left" Margin="183,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
                 <Label Content="Fullname" HorizontalAlignment="Left" Margin="44,103,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtFullname" HorizontalAlignment="Left" Margin="183,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
                 <Label Content="Email" HorizontalAlignment="Left" Margin="44,157,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="183,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
                 <Label Content="Phone number" HorizontalAlignment="Left" Margin="44,209,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtPhonenumber" HorizontalAlignment="Left" Margin="183,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
                 <Label Content="Role" HorizontalAlignment="Left" Margin="44,260,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtRole" HorizontalAlignment="Left" Margin="183,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
                 <Label Content="Points" HorizontalAlignment="Left" Margin="44,310,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtPoint" HorizontalAlignment="Left" Margin="183,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
+                
                 <Label Content="Password" HorizontalAlignment="Left" Margin="44,362,0,0" VerticalAlignment="Top" Background="#00000000" Foreground="White" FontSize="16"/>
                 <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="183,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" Height="31" IsEnabled="False"/>
                 
