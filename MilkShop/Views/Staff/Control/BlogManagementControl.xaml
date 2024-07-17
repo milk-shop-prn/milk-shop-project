@@ -28,10 +28,11 @@
             </Border.Background>
 
             <Grid>
-                <TextBlock Text="Mangage Article" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="Article Management" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                 <DataGrid x:Name="dbArticle" Margin="444,44,10,87" AutoGenerateColumns="False" SelectionChanged="DbArticle_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Article ID" Binding="{Binding ArticleId}"/>
+                        <DataGridTextColumn Header="Deleted" Binding="{Binding Deleted}"/>
                         <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
                         <DataGridTextColumn Header="Content" Binding="{Binding Content}"/>
                         <DataGridTextColumn Header="Author ID" Binding="{Binding AuthorId}"/>

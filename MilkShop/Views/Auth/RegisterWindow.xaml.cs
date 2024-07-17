@@ -46,7 +46,7 @@ namespace MilkShop.Views.Auth
             string passworld = TxtPassword.Password;
             string fullName = TxtFullName.Text;
             string phone = TxtPhone.Text;
-            
+
             AesEncryption aesEncryption = new AesEncryption();
             User user = new User();
             user.Email = email;
@@ -56,7 +56,6 @@ namespace MilkShop.Views.Auth
             user.Role = "Member";
             user.Points = 0;
 
-            MessageBox.Show(user.PasswordHash);
             try
             {
                 userService.SaveUser(user);

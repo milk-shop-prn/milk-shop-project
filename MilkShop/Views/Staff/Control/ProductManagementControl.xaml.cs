@@ -159,6 +159,7 @@ namespace MilkShop.Views.Staff.Control
                 else
                 {
                     product.ProductId = int.Parse(txtProductId.Text);
+                    product.Deleted = false;
                     _repo.UpdateProduct(product);
                     MessageBox.Show("Product updated."
                            , "Success", MessageBoxButton.OK
@@ -179,7 +180,8 @@ namespace MilkShop.Views.Staff.Control
                     "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    _repo.DeleteProduct(selectedProduct);
+                    selectedProduct.Deleted = true;
+                    _repo.UpdateProduct(selectedProduct);
                     LoadProduct();
                 }
             }

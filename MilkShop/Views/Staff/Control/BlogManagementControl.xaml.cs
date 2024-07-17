@@ -148,6 +148,7 @@ namespace MilkShop.Views.Staff.Control
                         if (int.TryParse(txtArticleID.Text, out int articleId))
                         {
                             article.ArticleId = articleId;
+                            article.Deleted = false;
                             _repo.UpdateArticle(article);
                             MessageBox.Show("Article has been updated.", "Success", MessageBoxButton.OK,
                                             MessageBoxImage.Information);
@@ -179,7 +180,8 @@ namespace MilkShop.Views.Staff.Control
                                                           MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    _repo.DeleteArticle(selectedArticle);
+                    selectedArticle.Deleted = true;
+                    _repo.UpdateArticle(selectedArticle);
                     LoadArticle();
                 }
             }

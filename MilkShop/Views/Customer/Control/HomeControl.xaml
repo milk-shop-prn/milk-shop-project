@@ -11,7 +11,7 @@
              Background="Transparent">
     <Grid>
         <StackPanel>
-            <Label Content="Welcome Milk Shop" Foreground="#FFE8DADA" FontSize="36" Height="81" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
+            <Label Content="Welcome Milk Shop" Foreground="#1f2937" FontSize="36" Height="81" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold"/>
             <Border Background="#ffffff" Width="664" CornerRadius="10" Margin="0,0,0,29">
                 <StackPanel>
                     <TextBox x:Name="txt_find" Text="" Height="66" Width="447" Margin="25,0,0,0" VerticalContentAlignment="Center" TextAlignment="Left" BorderThickness="0" TextChanged="txt_find_TextChanged" FontSize="16"/>

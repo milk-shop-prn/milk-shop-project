@@ -73,12 +73,11 @@ namespace DataAccessObjects
             }
         }
 
-  
+
         public bool UpdateUser(User user)
         {
             try
             {
-                AesEncryption aesEncryption = new AesEncryption();
                 using var db = new MilkShopContext();
                 db.Entry<User>(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
@@ -86,8 +85,8 @@ namespace DataAccessObjects
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
                 return false;
+                throw new Exception(ex.Message);
             }
         }
 
