@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DTO.Request
+namespace BusinessObjects.Request
 {
     public class BookingProductRequest
     {
@@ -21,7 +21,7 @@ namespace DTO.Request
         public string? Category { get; set; }
 
         public int quality { get; set; }
-        public String  urlImg { get; set; }
+        public String urlImg { get; set; }
 
     }
 }

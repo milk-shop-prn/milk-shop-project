@@ -1,5 +1,5 @@
 ﻿using BusinessObjects.Models;
-using DTO.Request;
+using BusinessObjects.Request;
 using MilkShop.Views.Auth;
 using MilkShop.Views.Customer.Control;
 using System;
@@ -102,7 +102,7 @@ namespace MilkShop.Views.Customer
         }
 
 
-        
+
 
         //private void CloseBtn_Click(object sender, RoutedEventArgs e)
         //{
@@ -114,6 +114,6 @@ namespace MilkShop.Views.Customer
         //    WindowState = WindowState.Minimized;
         //}
 
-    
+
     }
 }

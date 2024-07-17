@@ -34,8 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessObjects\BusinessObjects.csproj" />
-    <ProjectReference Include="..\DTO\DTO.csproj" />
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 

@@ -15,5 +15,7 @@ public partial class Article
 
     public DateTime PublishDate { get; set; }
 
+    public bool? Deleted { get; set; }
+
     public virtual User Author { get; set; } = null!;
 }
