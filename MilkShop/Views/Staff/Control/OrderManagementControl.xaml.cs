@@ -47,6 +47,12 @@ namespace MilkShop.Views.Staff.Control
             dbOrder.ItemsSource = list;
         }
 
+		private void LoadOrderDetails(int orderId)
+		{
+			var list = _detail.GetOrderDetailsByOrderId(orderId);
+			dbOrderDetails.ItemsSource = list;
+		}
+
 		private void comboxBoxUser()
 		{
 			try
@@ -105,15 +111,7 @@ namespace MilkShop.Views.Staff.Control
 				txtStatus.Text = string.Empty;
 			}
 		}
-		private void btnAdd_Click(object sender, RoutedEventArgs e)
-		{
-            if(dbOrder.SelectedItem is Order selectedItem
-                && selectedItem.OrderStatus != "Confirmed") 
-            {
-
-            }
-		}
-
+		
 		private void EnableOrderBox(bool status)
 		{
 			listName.IsEnabled = status;
@@ -229,7 +227,87 @@ namespace MilkShop.Views.Staff.Control
 
 		private void btnDelete_Click(object sender, RoutedEventArgs e)
 		{
+			if (dbOrder.SelectedItem is Order selected)
+			{
+				MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this order?",
+					"Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+				if (result == MessageBoxResult.Yes)
+				{
+					_order.DeleteOrder(selected);
+					LoadOrder();
+				}
 
+			}
+			else
+			{
+				MessageBox.Show("Please select an order to delete."
+					   , "Warning", MessageBoxButton.OK
+					   , MessageBoxImage.Warning);
+			}
+		}
+
+		private void btnAdd_Click(object sender, RoutedEventArgs e)
+		{
+			if (dbOrder.SelectedItem is Order selectedItem
+				&& selectedItem.OrderStatus != "Confirmed")
+			{
+				if (listProduct.SelectedItem is Product selectedProduct)
+				{
+					var product = _product.GetProductById(selectedProduct.ProductId);
+					var detail = new OrderDetail
+					{
+						OrderId = selectedItem.OrderId,
+						ProductId = selectedProduct.ProductId,
+						Quantity = int.Parse(txtQuantity.Text),
+						UnitPrice = product.Price,
+					};
+					_detail.SaveOrderDetail(detail);
+
+					selectedItem.TotalPrice += detail.Quantity * detail.UnitPrice;
+					_order.UpdateOrder(selectedItem);
+
+					LoadOrder();
+					LoadOrderDetails(selectedItem.OrderId);
+				}
+				else
+				{
+					MessageBox.Show("Please select a product."
+						   , "Notification", MessageBoxButton.OK
+						   , MessageBoxImage.Information);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select an order."
+					   , "Notification", MessageBoxButton.OK
+					   , MessageBoxImage.Information);
+			}
+		}
+
+		private void btnDeleteProduct_Click(object sender, RoutedEventArgs e)
+		{
+			if (dbOrder.SelectedItem is Order selectedOrder && dbOrderDetails.SelectedItem is OrderDetail selectedDetail)
+			{
+				MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this order detail?",
+					"Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+				if (result == MessageBoxResult.Yes)
+				{
+					_detail.DeleteOrderDetail(selectedDetail);
+
+					selectedOrder.TotalPrice = _detail.GetOrderDetailsByOrderId(selectedOrder.OrderId)
+						.Sum(d => d.Quantity * d.UnitPrice);
+					_order.UpdateOrder(selectedOrder);
+
+					LoadOrderDetails(selectedOrder.OrderId);
+					LoadOrder();  
+				}
+			}
+			else
+			{
+				MessageBox.Show("Please select an order detail to delete."
+					   , "Warning", MessageBoxButton.OK
+					   , MessageBoxImage.Warning);
+			}
 		}
 	}
 }
