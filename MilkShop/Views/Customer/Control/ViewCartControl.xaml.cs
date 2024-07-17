@@ -1,5 +1,5 @@
 ﻿using BusinessObjects.Models;
-using DTO.Request;
+using BusinessObjects.Request;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -41,20 +41,20 @@ namespace MilkShop.Views.Customer.Control
         {
             var list = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
             listCart.ItemsSource = list;
-            
 
-            total_price = list.Sum(x => x.Price*x.quality);
+
+            total_price = list.Sum(x => x.Price * x.quality);
             txt_totalPrice.Content = total_price.ToString();
             var listVoncher1 = voucherService.GetAllVouchers();
             listVoncher.ItemsSource = listVoncher1.Where(c => c.ExpiryDate > DateTime.Now);
             var customer = Application.Current.Properties["Account"] as User;
-            txt_point.Content = customer.Points.ToString()+"point";
+            txt_point.Content = customer.Points.ToString() + "point";
         }
 
         private void listCart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            
+
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -63,7 +63,7 @@ namespace MilkShop.Views.Customer.Control
             var view = button.DataContext as BookingProductRequest;
             var list = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
 
-            if (list.FirstOrDefault(c => c.ProductId == view.ProductId).quality>1)
+            if (list.FirstOrDefault(c => c.ProductId == view.ProductId).quality > 1)
             {
                 list.FirstOrDefault(c => c.ProductId == view.ProductId).quality -= 1;
             }
@@ -98,13 +98,13 @@ namespace MilkShop.Views.Customer.Control
                 var list = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
                 Order order = new Order();
                 order.TotalPrice = total_price;
-                order.OrderDate= DateTime.Now;
+                order.OrderDate = DateTime.Now;
                 order.OrderStatus = "Pending";
                 order.UserId = customer.UserId;
 
                 Order order1 = orderService.GetAll().OrderByDescending(c => c.UserId).FirstOrDefault();
                 orderService.SaveOrder(order);
-                foreach(var item in list)
+                foreach (var item in list)
                 {
                     OrderDetail orderDetail = new OrderDetail();
                     orderDetail.OrderId = order1.OrderId;
@@ -114,14 +114,14 @@ namespace MilkShop.Views.Customer.Control
 
                     orderDetailService.SaveOrderDetail(orderDetail);
                 }
-                
+
 
                 bool? isChecked = txt_point.IsChecked;
                 if (isChecked == true)
                 {
-                    var UpdateCustomer=userService.GetUserById(customer.UserId);
+                    var UpdateCustomer = userService.GetUserById(customer.UserId);
                     UpdateCustomer.Points = 0;
-                    Application.Current.Properties["Account"]=UpdateCustomer;
+                    Application.Current.Properties["Account"] = UpdateCustomer;
                     userService.UpdateUser(UpdateCustomer);
                 }
 
@@ -129,7 +129,7 @@ namespace MilkShop.Views.Customer.Control
                 {
                     int voncher_id = selectionVoncherId.VoucherId;
                     var find_voncher = voucherService.GetVoucherById(voncher_id);
-                    find_voncher.IsUsed =true;
+                    find_voncher.IsUsed = true;
                     voucherService.UpdateVoucher(find_voncher);
                 }
                 Application.Current.Properties["listCart"] = null;
@@ -154,7 +154,7 @@ namespace MilkShop.Views.Customer.Control
                 int voncher_id = selectionVoncherId.VoucherId;
                 var find_voncher = voucherService.GetVoucherById(voncher_id);
                 total_price = (Decimal)(total_price - find_voncher.Discount);
-                txt_totalPrice.Content =total_price.ToString();
+                txt_totalPrice.Content = total_price.ToString();
             }
         }
 
@@ -162,10 +162,10 @@ namespace MilkShop.Views.Customer.Control
         {
             var customer = Application.Current.Properties["Account"] as User;
             bool? isChecked = txt_point.IsChecked;
-            if (isChecked==true)
+            if (isChecked == true)
             {
-               
-                
+
+
                 Decimal.TryParse(customer.Points.ToString(), out Decimal points);
                 total_price -= points;
                 txt_totalPrice.Content = total_price.ToString();
@@ -176,7 +176,7 @@ namespace MilkShop.Views.Customer.Control
                 total_price += points;
                 txt_totalPrice.Content = total_price.ToString();
             }
-            
+
         }
     }
 }

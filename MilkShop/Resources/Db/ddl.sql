@@ -9,7 +9,8 @@ CREATE TABLE Users (
     Email NVARCHAR(100) NOT NULL UNIQUE,
     PhoneNumber NVARCHAR(15),
     Role NVARCHAR(50) NOT NULL, -- Guest, Member, Staff, Admin
-    Points INT DEFAULT 0
+    Points INT DEFAULT 0,
+    Deleted BIT DEFAULT 0,
 );
 
 -- Tạo bảng Products
@@ -20,7 +21,8 @@ CREATE TABLE Products (
     Price DECIMAL(18, 2) NOT NULL,
     Stock INT NOT NULL,
     Category NVARCHAR(50),
-    ImageURL NVARCHAR(256)
+    ImageURL NVARCHAR(256),
+    Deleted BIT DEFAULT 0,
 );
 
 -- Tạo bảng Orders
@@ -72,7 +74,8 @@ CREATE TABLE Articles (
     Content NVARCHAR(MAX),
     AuthorID INT NOT NULL,
     PublishDate DATETIME NOT NULL DEFAULT GETDATE(),
-    FOREIGN KEY (AuthorID) REFERENCES Users(UserID)
+    FOREIGN KEY (AuthorID) REFERENCES Users(UserID),
+    Deleted BIT DEFAULT 0,
 );
 
 -- Tạo bảng Points
@@ -150,8 +153,8 @@ VALUES
 -- Thêm dữ liệu giả vào bảng Articles
 INSERT INTO Articles (Title, Content, AuthorID)
 VALUES 
-('Chăm sóc sức khỏe cho mẹ bầu', 'Nội dung chăm sóc sức khỏe cho mẹ bầu...', 4),
-('Lợi ích của sữa tươi', 'Nội dung về lợi ích của sữa tươi...', 4);
+('Chăm sóc sức khỏe cho mẹ bầu', 'Nội dung chăm sóc sức khỏe cho mẹ bầu...', 3),
+('Lợi ích của sữa tươi', 'Nội dung về lợi ích của sữa tươi...', 3);
 
 -- Thêm dữ liệu giả vào bảng Points
 INSERT INTO Points (UserID, Points)

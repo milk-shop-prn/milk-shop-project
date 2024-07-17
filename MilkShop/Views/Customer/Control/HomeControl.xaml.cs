@@ -1,6 +1,6 @@
 ﻿using BusinessObjects.Models;
+using BusinessObjects.Request;
 using DataAccessObjects;
-using DTO.Request;
 using Microsoft.IdentityModel.Tokens;
 using Services;
 using System;
@@ -34,15 +34,15 @@ namespace MilkShop.Views.Customer.Control
         {
             InitializeComponent();
             productService = new ProductService();
-            orderService = new OrderService();  
+            orderService = new OrderService();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             List<Product> ListProducts = productService.GetAll();
-            ProductsItemsControl.ItemsSource=ListProducts;
+            ProductsItemsControl.ItemsSource = ListProducts;
             var list = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
-            if(list != null)
+            if (list != null)
             {
                 txt_change.Text = list.Count().ToString();
             }
@@ -76,7 +76,7 @@ namespace MilkShop.Views.Customer.Control
 
                 List<Product> findListProduc = productService.GetAll();
                 findListProduc = findListProduc.Where(x => x.ProductName.Contains(findByName)).ToList();
-                ProductsItemsControl.ItemsSource=findListProduc;
+                ProductsItemsControl.ItemsSource = findListProduc;
             }
             else
             {
@@ -84,7 +84,7 @@ namespace MilkShop.Views.Customer.Control
                 List<Product> findListProduc = productService.GetAll();
                 ProductsItemsControl.ItemsSource = findListProduc;
             }
-          
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -96,7 +96,7 @@ namespace MilkShop.Views.Customer.Control
                 var product = productService.GetProductById(productId);
 
                 List<BookingProductRequest> listProducts = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
-                
+
                 if (!listProducts.IsNullOrEmpty())
                 {
                     var findBooking = listProducts.FirstOrDefault(x => x.ProductId == productId);
@@ -117,7 +117,7 @@ namespace MilkShop.Views.Customer.Control
                         bookingProductRequest.urlImg = product.ImageUrl;
                         listProducts.Add(bookingProductRequest);
                     }
-                    
+
                     Application.Current.Properties["listCart"] = listProducts;
                 }
                 else
@@ -136,7 +136,7 @@ namespace MilkShop.Views.Customer.Control
                     Application.Current.Properties["listCart"] = listProducts;
                 }
 
-               
+
 
             }
             UserControl_Loaded(sender, e);
@@ -148,8 +148,8 @@ namespace MilkShop.Views.Customer.Control
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            
-           
+
+
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -163,7 +163,7 @@ namespace MilkShop.Views.Customer.Control
                 Application.Current.Properties["ProductId"] = productId;
                 NavigationService.Navigate(new Uri("Views/Customer/Control/ViewDetail.xaml", UriKind.Relative));
             }
-            
+
 
         }
 
@@ -188,7 +188,7 @@ namespace MilkShop.Views.Customer.Control
 
         private void txt_change_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            
+
         }
     }
 }

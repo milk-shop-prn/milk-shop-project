@@ -1,5 +1,5 @@
 ﻿using BusinessObjects.Models;
-using DTO.Request;
+using BusinessObjects.Request;
 using Microsoft.IdentityModel.Tokens;
 using Services;
 using System;
@@ -38,39 +38,22 @@ namespace MilkShop.Views.Customer.Control
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-           
-            
-                int productId = Int32.Parse(txt_productId.Content.ToString());
-                var product = productService.GetProductById(productId);
 
-                List<BookingProductRequest> listProducts = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
 
-                if (!listProducts.IsNullOrEmpty())
+            int productId = Int32.Parse(txt_productId.Content.ToString());
+            var product = productService.GetProductById(productId);
+
+            List<BookingProductRequest> listProducts = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
+
+            if (!listProducts.IsNullOrEmpty())
+            {
+                var findBooking = listProducts.FirstOrDefault(x => x.ProductId == productId);
+                if (findBooking != null)
                 {
-                    var findBooking = listProducts.FirstOrDefault(x => x.ProductId == productId);
-                    if (findBooking != null)
-                    {
-                        findBooking.quality += 1;
-                    }
-                    else
-                    {
-                        BookingProductRequest bookingProductRequest = new BookingProductRequest();
-                        bookingProductRequest.ProductId = product.ProductId;
-                        bookingProductRequest.ProductName = product.ProductName;
-                        bookingProductRequest.Price = product.Price;
-                        bookingProductRequest.Stock = product.Stock;
-                        bookingProductRequest.Description = product.Description;
-                        bookingProductRequest.Category = product.Category;
-                        bookingProductRequest.quality = 1;
-                        listProducts.Add(bookingProductRequest);
-                    }
-                    MessageBox.Show(listProducts.Count.ToString() + " show khac nul");
-                    Application.Current.Properties["listCart"] = listProducts;
+                    findBooking.quality += 1;
                 }
                 else
                 {
-                    MessageBox.Show(listProducts.Count.ToString() + " show  nul");
-
                     BookingProductRequest bookingProductRequest = new BookingProductRequest();
                     bookingProductRequest.ProductId = product.ProductId;
                     bookingProductRequest.ProductName = product.ProductName;
@@ -80,11 +63,28 @@ namespace MilkShop.Views.Customer.Control
                     bookingProductRequest.Category = product.Category;
                     bookingProductRequest.quality = 1;
                     listProducts.Add(bookingProductRequest);
-                    Application.Current.Properties["listCart"] = listProducts;
                 }
+                MessageBox.Show(listProducts.Count.ToString() + " show khac nul");
+                Application.Current.Properties["listCart"] = listProducts;
+            }
+            else
+            {
+                MessageBox.Show(listProducts.Count.ToString() + " show  nul");
 
-                NavigationService.Navigate(new Uri("Views/Customer/Control/HomeControl.xaml", UriKind.Relative));
-            
+                BookingProductRequest bookingProductRequest = new BookingProductRequest();
+                bookingProductRequest.ProductId = product.ProductId;
+                bookingProductRequest.ProductName = product.ProductName;
+                bookingProductRequest.Price = product.Price;
+                bookingProductRequest.Stock = product.Stock;
+                bookingProductRequest.Description = product.Description;
+                bookingProductRequest.Category = product.Category;
+                bookingProductRequest.quality = 1;
+                listProducts.Add(bookingProductRequest);
+                Application.Current.Properties["listCart"] = listProducts;
+            }
+
+            NavigationService.Navigate(new Uri("Views/Customer/Control/HomeControl.xaml", UriKind.Relative));
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

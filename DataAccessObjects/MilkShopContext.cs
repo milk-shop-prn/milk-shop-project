@@ -48,15 +48,15 @@ public partial class MilkShopContext : DbContext
     {
         optionsBuilder.UseSqlServer(GetConnectionString());
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Article>(entity =>
         {
-            entity.HasKey(e => e.ArticleId).HasName("PK__Articles__9C6270C8059800E9");
+            entity.HasKey(e => e.ArticleId).HasName("PK__Articles__9C6270C8F1DFC380");
 
             entity.Property(e => e.ArticleId).HasColumnName("ArticleID");
             entity.Property(e => e.AuthorId).HasColumnName("AuthorID");
+            entity.Property(e => e.Deleted).HasDefaultValue(false);
             entity.Property(e => e.PublishDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -65,12 +65,12 @@ public partial class MilkShopContext : DbContext
             entity.HasOne(d => d.Author).WithMany(p => p.Articles)
                 .HasForeignKey(d => d.AuthorId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Articles__Author__6383C8BA");
+                .HasConstraintName("FK__Articles__Author__6477ECF3");
         });
 
         modelBuilder.Entity<Consultation>(entity =>
         {
-            entity.HasKey(e => e.ConsultationId).HasName("PK__Consulta__5D014A78851E07D7");
+            entity.HasKey(e => e.ConsultationId).HasName("PK__Consulta__5D014A78FE3A9838");
 
             entity.Property(e => e.ConsultationId).HasColumnName("ConsultationID");
             entity.Property(e => e.ConsultationDate)
@@ -82,12 +82,12 @@ public partial class MilkShopContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Consultations)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Consultat__Statu__6B24EA82");
+                .HasConstraintName("FK__Consultat__Statu__6D0D32F4");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAFDA67054F");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF1A26293C");
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
             entity.Property(e => e.OrderDate)
@@ -100,12 +100,12 @@ public partial class MilkShopContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Orders__UserID__5165187F");
+                .HasConstraintName("FK__Orders__UserID__52593CB8");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30C77BA0F0A");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30CDFB3EB2A");
 
             entity.Property(e => e.OrderDetailId).HasColumnName("OrderDetailID");
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
@@ -115,17 +115,17 @@ public partial class MilkShopContext : DbContext
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.OrderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Order__5441852A");
+                .HasConstraintName("FK__OrderDeta__Order__5535A963");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__OrderDeta__Produ__5535A963");
+                .HasConstraintName("FK__OrderDeta__Produ__5629CD9C");
         });
 
         modelBuilder.Entity<Point>(entity =>
         {
-            entity.HasKey(e => e.PointId).HasName("PK__Points__40A97781C2918FDA");
+            entity.HasKey(e => e.PointId).HasName("PK__Points__40A97781CA12A93E");
 
             entity.Property(e => e.PointId).HasColumnName("PointID");
             entity.Property(e => e.DateEarned)
@@ -136,15 +136,16 @@ public partial class MilkShopContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.PointsNavigation)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Points__UserID__6754599E");
+                .HasConstraintName("FK__Points__UserID__693CA210");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6ED13273D38");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6ED16E0F93C");
 
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.Category).HasMaxLength(50);
+            entity.Property(e => e.Deleted).HasDefaultValue(false);
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.ImageUrl)
                 .HasMaxLength(256)
@@ -155,7 +156,7 @@ public partial class MilkShopContext : DbContext
 
         modelBuilder.Entity<Report>(entity =>
         {
-            entity.HasKey(e => e.ReportId).HasName("PK__Reports__D5BD48E5C489E927");
+            entity.HasKey(e => e.ReportId).HasName("PK__Reports__D5BD48E5722D8008");
 
             entity.Property(e => e.ReportId).HasColumnName("ReportID");
             entity.Property(e => e.Description).HasMaxLength(1000);
@@ -167,12 +168,12 @@ public partial class MilkShopContext : DbContext
 
             entity.HasOne(d => d.ReportedByNavigation).WithMany(p => p.Reports)
                 .HasForeignKey(d => d.ReportedBy)
-                .HasConstraintName("FK__Reports__Reporte__6EF57B66");
+                .HasConstraintName("FK__Reports__Reporte__70DDC3D8");
         });
 
         modelBuilder.Entity<Review>(entity =>
         {
-            entity.HasKey(e => e.ReviewId).HasName("PK__Reviews__74BC79AE95372D18");
+            entity.HasKey(e => e.ReviewId).HasName("PK__Reviews__74BC79AE30041415");
 
             entity.Property(e => e.ReviewId).HasColumnName("ReviewID");
             entity.Property(e => e.Comment).HasMaxLength(1000);
@@ -185,22 +186,22 @@ public partial class MilkShopContext : DbContext
             entity.HasOne(d => d.Product).WithMany(p => p.Reviews)
                 .HasForeignKey(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Reviews__Product__59FA5E80");
+                .HasConstraintName("FK__Reviews__Product__5AEE82B9");
 
             entity.HasOne(d => d.User).WithMany(p => p.Reviews)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Reviews__UserID__5AEE82B9");
+                .HasConstraintName("FK__Reviews__UserID__5BE2A6F2");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC806E44F3");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC2CDE2458");
 
-
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D105343DED253F").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534DCA146E0").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Deleted).HasDefaultValue(false);
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.FullName).HasMaxLength(100);
             entity.Property(e => e.PasswordHash).HasMaxLength(256);
@@ -211,9 +212,9 @@ public partial class MilkShopContext : DbContext
 
         modelBuilder.Entity<Voucher>(entity =>
         {
-            entity.HasKey(e => e.VoucherId).HasName("PK__Vouchers__3AEE79C1ADD3F2E7");
+            entity.HasKey(e => e.VoucherId).HasName("PK__Vouchers__3AEE79C1CEF237C4");
 
-            entity.HasIndex(e => e.Code, "UQ__Vouchers__A25C5AA74B7FD56D").IsUnique();
+            entity.HasIndex(e => e.Code, "UQ__Vouchers__A25C5AA72F21827C").IsUnique();
 
             entity.Property(e => e.VoucherId).HasColumnName("VoucherID");
             entity.Property(e => e.Code).HasMaxLength(50);
