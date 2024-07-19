@@ -27,6 +27,11 @@ namespace Services
             return this.orderDetailRepository.GetOrderDetailById(id);
         }
 
+        public List<OrderDetail> GetOrderDetailsByOrderId(int orderId)
+        {
+            return this.orderDetailRepository.GetOrderDetailsByOrderId(orderId);
+        }
+
         public void SaveOrderDetail(OrderDetail orderDetail)
         {
             this.orderDetailRepository.SaveOrderDetail(orderDetail);

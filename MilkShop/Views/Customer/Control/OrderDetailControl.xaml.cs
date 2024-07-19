@@ -34,32 +34,21 @@ namespace MilkShop.Views.Customer.Control
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            string orderDatailId = Application.Current.Properties["orderDetailId"].ToString();
-            var listOrder = orderDetailService.GetOrderDetailById(Int32.Parse(orderDatailId));
-            var product = productService.GetProductById(listOrder.ProductId);
-            var order = orderService.GetOrderById(listOrder.OrderId);
-
-
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(product.ImageUrl, UriKind.Absolute);
-            bitmap.EndInit();
-
-            txt_imgProduc.Source = bitmap;
-            txt_name.Content = product.ProductName;
-            txt_description.Content= product.Description;
-            txt_price.Content = product.Price;
-            txt_category.Content = product.Category;
-            txt_orderDate.Content = order.OrderDate;
-
-            txt_unitPrice.Content = listOrder.UnitPrice;
-            txt_quantity.Content = listOrder.Quantity;
+            string orderId = Application.Current.Properties["orderId"].ToString();
+            var listOrderDetails = orderDetailService.GetOrderDetailsByOrderId(Int32.Parse(orderId));
+            datag.Items.Clear();
+            datag.ItemsSource = listOrderDetails;
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Views/Customer/Control/HistoryControl.xaml", UriKind.Relative));
+        }
+
+        private void datag_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

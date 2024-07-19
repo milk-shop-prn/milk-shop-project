@@ -23,6 +23,8 @@
     <None Remove="Resources\Assets\img_signout.png" />
     <None Remove="Resources\Assets\key-icon.png" />
     <None Remove="Resources\Assets\mail.png" />
+    <None Remove="Resources\Assets\milk-demo.jpg" />
+    <None Remove="Resources\Assets\milk-demo2.jpg" />
     <None Remove="Resources\Assets\phone.png" />
     <None Remove="Resources\Assets\search-alt-2-regular-24.png" />
     <None Remove="Resources\Assets\tgBtn_default.png" />
@@ -56,6 +58,8 @@
     <Resource Include="Resources\Assets\img_signout.png" />
     <Resource Include="Resources\Assets\key-icon.png" />
     <Resource Include="Resources\Assets\mail.png" />
+    <Resource Include="Resources\Assets\milk-demo.jpg" />
+    <Resource Include="Resources\Assets\milk-demo2.jpg" />
     <Resource Include="Resources\Assets\phone.png" />
     <Resource Include="Resources\Assets\search-alt-2-regular-24.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

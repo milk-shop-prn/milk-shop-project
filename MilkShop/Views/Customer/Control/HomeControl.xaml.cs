@@ -39,7 +39,7 @@ namespace MilkShop.Views.Customer.Control
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Product> ListProducts = productService.GetAll();
+            List<Product> ListProducts = productService.GetAll().Where(p => p.Deleted == false).ToList();
             ProductsItemsControl.ItemsSource = ListProducts;
             var list = Application.Current.Properties["listCart"] as List<BookingProductRequest>;
             if (list != null)
