@@ -59,7 +59,7 @@ namespace MilkShop.Views.Customer.Control
         {
             Button button = sender as Button;
             var OrderDetail = button.DataContext as Order;
-            Application.Current.Properties["orderDetailId"] = OrderDetail.OrderId;
+            Application.Current.Properties["orderId"] = OrderDetail.OrderId;
             NavigationService.Navigate(new Uri("Views/Customer/Control/OrderDetailControl.xaml", UriKind.Relative));
 
         }

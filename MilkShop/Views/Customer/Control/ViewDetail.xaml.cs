@@ -97,7 +97,7 @@ namespace MilkShop.Views.Customer.Control
             txt_description.Text = findProduct.Description;
             txt_stock.Content = findProduct.Stock;
             txt_category.Content = findProduct.Category;
-            txtImg.Source = new BitmapImage(new Uri(findProduct.ImageUrl));
+            txtImg.Source = new BitmapImage(new Uri(findProduct.ImageUrl, UriKind.Relative));
 
         }
     }
